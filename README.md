@@ -1,7 +1,9 @@
 # AI-based Network Anomaly Detector
 
 ## Description
-AI-Based Network Anomaly Detector is a real-time pipeline which can sniff packets with Scapy, build multi-window traffic features (e.g., 5s/60s/300s), and scores anomalies using an ensemble of Isolation Forest, One-Class SVM, and deep autoencoders (dense + LSTM) built with scikit-learn and PyTorch.
+AI-Based Network Anomaly Detector is a real-time pipeline which can sniff packets with Scapy, build multi-window traffic features (for example, 5s/60s/300s), and scores anomalies using an ensemble of Isolation Forest, One-Class SVM, and deep autoencoders (dense + LSTM) built with scikit-learn and PyTorch.
+
+Ensemble: Isolation Forest, One-Class SVM, and deep autoencoders (dense + LSTM)
 
 A short baseline capture computes per-model p99 thresholds. The online detector then normalizes and combines scores into a single ensemble signal each second.
 
