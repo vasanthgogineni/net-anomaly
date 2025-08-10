@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.dist/
+.build/
+
+# Virtual env
+venv/
+.envrc
+
+# Local config/secrets
+.env
+artifacts/
+*.log
+
+# OS junk
+.DS_Store

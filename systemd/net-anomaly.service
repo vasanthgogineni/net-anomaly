@@ -1,0 +1,18 @@
+[Unit]
+Description=Real-time Network Anomaly Detector
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/net-anomaly
+Environment=PYTHONUNBUFFERED=1
+Environment=INFLUX_TOKEN=REPLACE_ME
+ExecStart=/opt/net-anomaly/venv/bin/python -u -m src.detect --config config.yaml
+Restart=always
+RestartSec=5
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target

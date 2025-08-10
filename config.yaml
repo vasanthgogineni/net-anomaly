@@ -1,0 +1,43 @@
+# General runtime config
+iface: "en0"               # default Wi‑Fi interface; change if needed (e.g., en0 on macOS, wlan1, etc.)
+bpf_filter: "ip or ip6"     # optional BPF filter (leave blank for all)
+node_name: "sensor-1"       # tag written to Influx
+
+# Feature windows (seconds)
+windows:
+  short: 5
+  medium: 60
+  long: 300
+
+# Feature extraction options
+feature_resolution_sec: 1   # roll features every N seconds
+max_retention_sec: 900      # how many seconds of per-second buckets to retain
+min_packets_per_tick: 1     # skip feature row if less than this in the last second
+
+# Model paths (created by train.py)
+artifacts_dir: "artifacts"
+scaler_path: "artifacts/scaler.joblib"
+columns_path: "artifacts/columns.json"
+iforest_path: "artifacts/iforest.joblib"
+ocsvm_path: "artifacts/ocsvm.joblib"
+ae_path: "artifacts/autoencoder.pt"
+lstm_path: "artifacts/lstm.pt"
+thresholds_path: "artifacts/thresholds.json"
+ensemble_weights: { iforest: 0.25, ocsvm: 0.25, ae: 0.25, lstm: 0.25 }
+
+# Training options
+training:
+  capture_seconds: 600      # baseline capture duration
+  seq_len: 20               # for LSTM/sequence models
+  batch_size: 128
+  max_epochs: 30
+  lr: 0.001
+  validation_split: 0.1
+
+# InfluxDB 2.x
+influx:
+  url: "http://localhost:8086"
+  org: "my-org"
+  bucket: "netanoms"
+  token: "${INFLUX_TOKEN}"   # can use env var
+  write_interval_sec: 1       # how often to flush points
