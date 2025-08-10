@@ -1,4 +1,13 @@
-# Net Anomaly
+# AI-based Network Anomaly Detector
+
+## Description
+AI-Based Network Anomaly Detector is a real-time pipeline which can sniff packets with Scapy, build multi-window traffic features (e.g., 5s/60s/300s), and scores anomalies using an ensemble of Isolation Forest, One-Class SVM, and deep autoencoders (dense + LSTM) built with scikit-learn and PyTorch.
+
+A short baseline capture computes per-model p99 thresholds. The online detector then normalizes and combines scores into a single ensemble signal each second.
+
+Metrics and scores stream to InfluxDB 2.x and are visualized in Grafana.
+
+Currently works on MacOS and Linux.
 
 ## 0) Prereqs
 - Python 3.10+
