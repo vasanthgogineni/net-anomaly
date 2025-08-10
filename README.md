@@ -1,4 +1,4 @@
-# Net Anomaly — Quick Start (No Docker)
+# Net Anomaly
 
 ## 0) Prereqs
 - Python 3.10+
